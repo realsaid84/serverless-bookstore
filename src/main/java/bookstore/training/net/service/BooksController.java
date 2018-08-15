@@ -30,7 +30,7 @@ public class BooksController {
      */
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<?> getHomeBooks() {
-        logger.info("Get Some books");
+        logger.info("Create Hom Page");
         return new ResponseEntity<>("BookStore MicroServices :"
         		+ "<br><a href=\"./books\">[Get All Books]</a>"
         		+ "<br><a href=\"./books/55\">[Get Book By Id]"
