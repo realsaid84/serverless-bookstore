@@ -54,7 +54,7 @@ response:
 [{"bookId":99,"title":"Title50","publisher":"Bookstore","year":"19050","price":250.0,"authors":[{"authorId":100,"name":"Lambeth North50","placeOfBirth":"EC50"}]}]
 
 ### Search By Title
-GET http://bookstoreapi-env.auwr3xuf3h.eu-west-1.elasticbeanstalk.com/books/search?q=Title50
+GET http://bookstoreapi-env.auwr3xuf3h.eu-west-1.elasticbeanstalk.com/books/search?q=Title51
 response:
 200 OK
 [{"bookId":99,"title":"Title50","publisher":"Bookstore","year":"19050","price":250.0,"authors":[{"authorId":100,"name":"Lambeth North50","placeOfBirth":"EC50"}]}]
