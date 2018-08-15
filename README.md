@@ -56,3 +56,6 @@ DELETE http://localhost:8080/books/Title50
 response:
 200 OK
 Deleted:99
+
+## POSTMAN Published API Requests
+The POSTMAN published API can be accessed publicly  https://documenter.getpostman.com/view/3255604/RWTmwJmg
