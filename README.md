@@ -18,25 +18,25 @@ Consequently to implement Question 2 the API Definition Swagger file was created
 
 
 ### Create a book
-POST http://localhost:8080/books
+POST http://bookstoreapi-env.auwr3xuf3h.eu-west-1.elasticbeanstalk.com/books
 payload:
 {"title":"Title50","publisher":"Bookstore","year":"19050","price":250.0,"authors":[{"authorId":100,"name":"Lambeth North50","placeOfBirth":"EC50"}]}
 response:
 201 {"bookId":99,"title":"Title50","publisher":"Bookstore","year":"19050","price":250.0,"authors":[{"authorId":100,"name":"Lambeth North50","placeOfBirth":"EC50"}]}
 
 ### Get a book by id 
-GET http://localhost:8080/books/99
+GET http://bookstoreapi-env.auwr3xuf3h.eu-west-1.elasticbeanstalk.com/books/99
 response:
 {"bookId":99,"title":"Title50","publisher":"Bookstore","year":"19050","price":250.0,"authors":[{"authorId":100,"name":"Lambeth North50","placeOfBirth":"EC50"}]}
 
 ### Get all books
-GET http://localhost:8080/books
+GET http://bookstoreapi-env.auwr3xuf3h.eu-west-1.elasticbeanstalk.com/books
 response:
 200 OK
 [{"bookId":99,"title":"Title50","publisher":"Bookstore","year":"19050","price":250.0,"authors":[{"authorId":100,"name":"Lambeth North50","placeOfBirth":"EC50"}]}]
 
 ### Update a book
-PUT http://localhost:8080/books/99
+PUT http://bookstoreapi-env.auwr3xuf3h.eu-west-1.elasticbeanstalk.com/books/99
 payload:
 {"bookId":99,"title":"Title50","publisher":"Bookstore","year":"2010","price":250.0,"authors":[{"authorId":100,"name":"Lambeth North50","placeOfBirth":"EC50"}]}
 response:
@@ -44,7 +44,7 @@ response:
 {"bookId":99,"title":"Title50","publisher":"Bookstore","year":"19050","price":250.0,"authors":[{"authorId":100,"name":"Lambeth North50","placeOfBirth":"EC50"}]}
 
 ### Patch a book
-PUT http://localhost:8080/books/99
+PUT http://bookstoreapi-env.auwr3xuf3h.eu-west-1.elasticbeanstalk.com/books/99
 payload:
 {"bookId":99,"title":"Title50","price":250.0}
 response:
@@ -52,18 +52,18 @@ response:
 {"bookId":99,"title":"Title50","publisher":"Bookstore","year":"19050","price":250.0,"authors":[{"authorId":100,"name":"Lambeth North50","placeOfBirth":"EC50"}]}
 
 ### Search By Author
-GET http://localhost:8080/books/search?q=Lambeth%20North50
+GET http://bookstoreapi-env.auwr3xuf3h.eu-west-1.elasticbeanstalk.com//books/search?q=Lambeth%20North50
 response:
 [{"bookId":99,"title":"Title50","publisher":"Bookstore","year":"19050","price":250.0,"authors":[{"authorId":100,"name":"Lambeth North50","placeOfBirth":"EC50"}]}]
 
 ### Search By Title
-GET http://localhost:8080/books/search?q=Title50
+GET http://bookstoreapi-env.auwr3xuf3h.eu-west-1.elasticbeanstalk.com/books/search?q=Title50
 response:
 200 OK
 [{"bookId":99,"title":"Title50","publisher":"Bookstore","year":"19050","price":250.0,"authors":[{"authorId":100,"name":"Lambeth North50","placeOfBirth":"EC50"}]}]
 
 ### Delete
-DELETE http://localhost:8080/books/Title50
+DELETE http://bookstoreapi-env.auwr3xuf3h.eu-west-1.elasticbeanstalk.com/books/Title50
 response:
 200 OK
 Deleted:99
