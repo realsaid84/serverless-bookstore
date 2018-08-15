@@ -23,6 +23,23 @@ public class BooksController {
     
     @Autowired BookService bookService;
 
+    
+    /**
+     * Get Books 
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity<?> getHomeBooks() {
+        logger.info("Get Some books");
+        return new ResponseEntity<>("BookStore MicroServices :"
+        		+ "<br><a href=\"./books\">[Get All Books]</a>"
+        		+ "<br><a href=\"./books/55\">[Get Book By Id]"
+        		+ "<br><a href=\"./books/search?q=Title19\">[Search for Books with a Search Term: Title19]"
+        		+ "<br>[Update Books]"
+        		+ "<br>[Patch Books]"
+        		+ "<br>[Create Books]", HttpStatus.OK);
+    }
+    
     /**
      * Get Books 
      * @return
