@@ -67,3 +67,4 @@ Deleted:99
 
 ## POSTMAN Published API Requests
 The POSTMAN published API can be accessed publicly  https://documenter.getpostman.com/view/3255604/RWTmwJmg ( You can click Run in PostMan) to automatically run each of the API service endpoints.
+![Published Postman Screenshot](PostMan_APIScreenshot.png?raw=true "Published Postman Screenshot")
