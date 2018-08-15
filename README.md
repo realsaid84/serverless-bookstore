@@ -41,7 +41,7 @@ response:
 {"bookId":99,"title":"Title50","publisher":"Bookstore","year":"19050","price":250.0,"authors":[{"authorId":100,"name":"Lambeth North50","placeOfBirth":"EC50"}]}
 
 ### Search By Author
-GET http://localhost:8080/books?q=Lambeth North50
+GET http://localhost:8080/books?q=Lambeth%20North50
 response:
 [{"bookId":99,"title":"Title50","publisher":"Bookstore","year":"19050","price":250.0,"authors":[{"authorId":100,"name":"Lambeth North50","placeOfBirth":"EC50"}]}]
 
