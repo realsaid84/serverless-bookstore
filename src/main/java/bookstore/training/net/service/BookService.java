@@ -86,12 +86,51 @@ public class BookService {
 		nullifyNestedBooks(book);
 		return book;
 	}
+	
+	public Book getDeeplyNestedBook(String bookId) {
+		logger.info("Retrieving Book {} from DB", bookId);
+		Book book = bookRepository.findByBookId(Long.valueOf(bookId));
+		return book;
+	}
 
 	public Book createBook(Book book) {
+		List<Book> savedBookEntity = bookRepository.saveAll(convertBookRequest(book));
+		if(savedBookEntity != null && !savedBookEntity.isEmpty()) {
+			savedBookEntity.forEach(this::nullifyNestedBooks);
+			return savedBookEntity.get(0);
+		}
+		return null;
+	}
+
+	private List<Book> convertBookRequest(Book book) {
+		Book bookToSave = convertBook(book);
 		logger.info("Saving book {} to database", book.getTitle());
-		Book savedBook = bookRepository.save(book);
-		 nullifyNestedBooks(savedBook);
-		return savedBook;
+		List<Book> books = new ArrayList<>();
+		if(book.getAuthors() != null && ! book.getAuthors().isEmpty()) {
+			List<Author> authorList =  new ArrayList<>();
+			for(Author author : book.getAuthors()) {
+				Author convertedAuthor = new Author();
+				convertedAuthor.setBook1(bookToSave);
+				convertedAuthor.setDateOfBirth(author.getDateOfBirth());
+				convertedAuthor.setDateOfDeath(author.getDateOfDeath());
+				convertedAuthor.setName(author.getName());
+				convertedAuthor.setPlaceOfBirth(author.getPlaceOfBirth());
+				convertedAuthor.setPlaceOfDeath(author.getPlaceOfDeath());
+				authorList.add(convertedAuthor);
+			}
+			bookToSave.setAuthors(authorList);
+		}
+		books.add(bookToSave);
+		return books;
+	}
+
+	private Book convertBook(Book book) {
+		Book convertedBook = new Book();
+		convertedBook.setTitle(book.getTitle());
+		convertedBook.setPublisher(book.getPublisher());
+		convertedBook.setYear(book.getYear());
+		convertedBook.setPrice(book.getPrice());
+		return convertedBook;
 	}
 
 	public void deleteBook(String bookId) {
@@ -110,7 +149,8 @@ public class BookService {
 		Optional<Book> bookToBeUpdated = bookRepository.findById(book.getBookId());
 		if(bookToBeUpdated.isPresent()) {
 			logger.info("Updating Book {} ", book.getBookId());
-			Book updatedBook = bookRepository.saveAndFlush(book);
+			
+			Book updatedBook = bookRepository.save(book);
 			nullifyNestedBooks(updatedBook);
 			return updatedBook;
 		}

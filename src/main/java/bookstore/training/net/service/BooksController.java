@@ -89,9 +89,9 @@ public class BooksController {
      */
     @RequestMapping(value = "/books/{bookId}", method = RequestMethod.PATCH)
     public ResponseEntity<?> patchBook(@PathVariable("bookId") String bookId, @RequestBody Book book) {
-        logger.info("Patching Book {}", bookId);
-        book.setBookId(Long.valueOf(bookId));
-        return updateBook(bookId, book);
+        Book existingBook = bookService.getDeeplyNestedBook(bookId);
+        copyPatchProperties(book, existingBook);
+        return updateBook(bookId, existingBook);
     }
     
     @RequestMapping(value = "/books/{bookId}", method = RequestMethod.PUT)
@@ -100,6 +100,29 @@ public class BooksController {
         book.setBookId(Long.valueOf(bookId));
         return updateBook(bookId, book);
     }
+
+    /**
+     * Copies patch properties from patchedBook to ExistingBook
+     * @param book
+     * @param existingBook
+     */
+	private void copyPatchProperties(Book book, Book existingBook) {
+		if(book.getPrice() != null) {
+        		existingBook.setPrice(book.getPrice());
+        }
+        if(book.getPublisher() != null) {
+    			existingBook.setPublisher(book.getPublisher());
+    		}
+        if(book.getTitle() != null) {
+			existingBook.setTitle(book.getTitle());
+		}
+        if(book.getYear() != null) {
+			existingBook.setYear(book.getYear());
+		}
+        if(book.getAuthors() != null && !book.getAuthors().isEmpty()) {
+			existingBook.setAuthors(book.getAuthors());
+		}
+	}
 
 	private ResponseEntity<?> updateBook(String bookId, Book book) {
 		Book updatedBook = bookService.updateBook(book);
