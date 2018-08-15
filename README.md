@@ -3,12 +3,12 @@
 Spring Boot based implementation of a lean BookStore Serverless Application based on Spring Boot.
 It uses an in-memory database to handle CRUD operations of the bookStore.
 
-###Challenge
+### Challenge
 Q.No.1:
 Please go through the API spec and validate the APIs. If the API endpoints are not according to standards please modify and provide your justification in your answer. 
 For your reference these are the HTTP REST end points in general.
 
-###Solution
+### Solution
 The HTTP Methods provided in the json spec : [bookstore-api-v1-spec.json](src/main/resources/bookstore-api-v1-spec.json) did not properly define the specifications for the PATCH, PUT and DELETE operations.
 
 Consequently to implement Question 2 the API Definition Swagger file was created to Address issues found in the json spec : [serverless-bookstore-api-v1.yaml](serverless-bookstore-api-v1.yaml)
@@ -66,4 +66,4 @@ response:
 Deleted:99
 
 ## POSTMAN Published API Requests
-The POSTMAN published API can be accessed publicly  https://documenter.getpostman.com/view/3255604/RWTmwJmg ( You can click Run in PostMan) to automatically run the each API.
+The POSTMAN published API can be accessed publicly  https://documenter.getpostman.com/view/3255604/RWTmwJmg ( You can click Run in PostMan) to automatically run each of the API service endpoints.
